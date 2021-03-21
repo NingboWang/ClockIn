@@ -20,7 +20,7 @@ sckey = sys.argv[8]
 # ---------------------------------------------------------------------------
 session = requests.Session()
 now = time.time()+28800
-date = time.strftime("%m月%d日",time.localtime(now))
+date = time.strftime("%m-%d", time.localtime(now))
 
 
 # Wxpush()消息推送模块
@@ -82,11 +82,11 @@ def sign_in(token):
         'Content-Length': '536'
     }
     content = {"location": {"address": address, "lat": lat, "lng": lng, "code": "1"}, "temperature": "36.6",
-                        "health": "是", "observation": "否", "confirmed": "否", "haveCOVIDInPlaceOfAbode": "否",
-                        "goToHuiBei": "否", "contactIllPerson": "否", "haveYouEverBeenAbroad": "否",
-                        "familyPeopleNum": "4", "isFamilyHealth": "否", "isFamilyColdChain": "否", "isFamilyStatus": "否",
-                        "familyPeopleIsAway": "否", "hasYourFamilyEverBeenAbroad": "否", "leave": "否",
-                        "isYesterdayMove": "否", "admission": "是", "help": "", "nowLocation": district}
+               "health": "是", "observation": "否", "confirmed": "否", "haveCOVIDInPlaceOfAbode": "否",
+               "goToHuiBei": "否", "contactIllPerson": "否", "haveYouEverBeenAbroad": "否",
+               "familyPeopleNum": "4", "isFamilyHealth": "否", "isFamilyColdChain": "否", "isFamilyStatus": "否",
+               "familyPeopleIsAway": "否", "hasYourFamilyEverBeenAbroad": "否", "leave": "否",
+               "isYesterdayMove": "否", "admission": "是", "help": "", "nowLocation": district}
     data = {"health": 0,
             "student": 1,
             "templateId": 2,
@@ -119,7 +119,8 @@ def get_signInId(token):
         'size': '10'
     }
     try:
-        signInId = session.get(url=url, headers=header, data=data).json()['data']['content'][0]['id']
+        signInId = session.get(url=url, headers=header, data=data).json()[
+            'data']['content'][0]['id']
         return signInId
     except:
         pass
