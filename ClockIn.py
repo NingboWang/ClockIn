@@ -25,7 +25,7 @@ date = time.strftime("%m-%d", time.localtime(now))
 
 # Wxpush()消息推送模块
 def Wxpush(msg):
-    url = f'https://sc.ftqq.com/{sckey}.send?text={date}{msg}'
+    url = f'https://sctapi.ftqq.com/{sckey}.send?text={date}{msg}'
     for _ in range(3):
         err = requests.get(url)
         if not err.json()['errno']:
