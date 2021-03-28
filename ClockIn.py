@@ -28,7 +28,7 @@ def Wxpush(msg):
     url = f'https://sctapi.ftqq.com/{sckey}.send?text={date}{msg}'
     for _ in range(3):
         err = requests.get(url)
-        if not err.json()['errno']:
+        if not err.json()['code']:
             break
 
 
